@@ -7,6 +7,40 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
+
+/**
+ * Remove any non numeric characters from the phone number but leave any plus sign at the beginning
+ * phone (String) phone number to clean
+ * @param phone
+ * @returns {*}
+ */
+function cleanPhone (phone){
+  phone = phone.replace(/[^\d\+]/g, '');
+  if (phone.substr(0, 1) ==='+') {
+    phone = '+' + phone.replace(/[^\d]/g, '');
+  } else {
+    phone = phone.replace(/[^\d]/g, '');
+  }
+  return phone;
+}
+
+/**
+ * Return the country code for an e164 formatted number
+ * phone (String) phone number in e164 format to return the country code for
+ * @param phone
+ * @returns {*}
+ */
+function getRegionCodeForNumber(phone) {
+  try {
+      var nr = cleanPhone(phone);
+      var number = phoneUtil.parseAndKeepRawInput(nr);
+      var output = phoneUtil.getRegionCodeForNumber(number);
+      return output.toString();
+  } catch (e) {
+      return '';
+  }
+}
+
 function isPossibleNumber(phoneNumber, regionCode) {
   regionCode = regionCode || "us";
   var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
@@ -124,3 +158,6 @@ goog.exportSymbol('phoneUtils.formatNational', formatNational);
 goog.exportSymbol('phoneUtils.formatInternational', formatInternational);
 goog.exportSymbol('phoneUtils.formatInOriginalFormat', formatInOriginalFormat);
 goog.exportSymbol('phoneUtils.formatOutOfCountryCallingNumber', formatOutOfCountryCallingNumber);
+goog.exportSymbol('phoneUtils.cleanPhone', cleanPhone);
+goog.exportSymbol('phoneUtils.getRegionCodeForNumber', getRegionCodeForNumber);
+
