@@ -142,5 +142,4 @@ goog.exportSymbol('phoneUtils.formatInternational', formatInternational);
 goog.exportSymbol('phoneUtils.formatInOriginalFormat', formatInOriginalFormat);
 goog.exportSymbol('phoneUtils.formatOutOfCountryCallingNumber', formatOutOfCountryCallingNumber);
 goog.exportSymbol('phoneUtils.cleanPhone', cleanPhone);
-goog.exportSymbol('phoneUtils.getRegionCodeForNumber', getRegionCodeForNumber);
 
