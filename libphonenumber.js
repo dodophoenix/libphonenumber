@@ -24,23 +24,6 @@ function cleanPhone (phone){
   return phone;
 }
 
-/**
- * Return the country code for an e164 formatted number
- * phone (String) phone number in e164 format to return the country code for
- * @param phone
- * @returns {*}
- */
-function getRegionCodeForNumber(phone) {
-  try {
-      var nr = cleanPhone(phone);
-      var number = phoneUtil.parseAndKeepRawInput(nr);
-      var output = phoneUtil.getRegionCodeForNumber(number);
-      return output.toString();
-  } catch (e) {
-      return '';
-  }
-}
-
 function isPossibleNumber(phoneNumber, regionCode) {
   regionCode = regionCode || "us";
   var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);

@@ -21,5 +21,4 @@ phoneUtils.formatInternational(phoneNumber, regionCode);
 phoneUtils.formatInOriginalFormat(phoneNumber, regionCode);
 phoneUtils.formatOutOfCountryCallingNumber(phoneNumber, regionCode, target);
 phoneUtils.cleanPhone(phoneNumber)
-phoneUtils.getRegionCodeForNumber(phoneNumber);
 ```
